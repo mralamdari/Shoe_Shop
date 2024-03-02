@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe Store</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #f8b400, #f28800); /* Gradient background */
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+        .btn-group-toggle {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Welcome to Our Shoe Store</h1>
+        <form id="shoeForm" action="/show_shoes" method="POST">
+            <!-- <div class="form-group">
+                <label for="size">Size:</label>
+                <select class="form-control" name="size" id="size">
+                    <option value="">Select Size</option>
+                    {% for size in sizes %}
+                        <option value="{{ size }}">{{ size }}</option>
+                    {% endfor %}
+                </select>
+            </div> -->
+
+            <div class="form-group">
+                <label for="size">Size:</label><br>
+                <div class="btn-group-toggle" data-toggle="buttons">
+                    {% for size in sizes %}
+                        <label class="btn btn-outline-primary">
+                            <input type="checkbox" name="size" id="{{ size }}" value="{{ size }}" autocomplete="off">{{ size }}
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="sex">Genders:</label><br>
+                <div class="btn-group-toggle" data-toggle="buttons">
+                    {% for sex in sexes %}
+                        <label class="btn btn-outline-primary">
+                            <input type="checkbox" name="sex" id="{{ sex }}" value="{{ sex }}" autocomplete="off">{{ sex }}
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+        
+            <div class="form-group">
+                <label for="color">Color:</label><br>
+                <div class="btn-group-toggle" data-toggle="buttons">
+                    {% for color in colors %}
+                        <label class="btn btn-outline-primary">
+                            <input type="checkbox" name="color" id="{{ color }}" value="{{ color }}" autocomplete="off">{{ color }}
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+        
+            <div class="form-group">
+                <label for="type">Type:</label><br>
+                <div class="btn-group-toggle" data-toggle="buttons">
+                    {% for type in types %}
+                        <label class="btn btn-outline-primary">
+                            <input type="checkbox" name="type" id="{{ type }}" value="{{ type }}" autocomplete="off">{{ type }}
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+        
+            <div class="form-group">
+                <label for="shoelace">Shoelace:</label><br>
+                <div class="btn-group-toggle" data-toggle="buttons">
+                    {% for shoelace in shoelaces %}
+                        <label class="btn btn-outline-primary">
+                            <input type="checkbox" name="shoelace" id="{{ shoelace }}" value="{{ shoelace }}" autocomplete="off">{{ shoelace }}
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+        
+            <button type="submit" class="btn btn-primary btn-block">Show Shoes</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selected Shoes</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            padding-top: 50px;
+            padding-bottom: 50px;
+            color: #333; /* Text color */
+        }
+        .container {
+            max-width: 100%; /* Make the container full width */
+            margin: auto;
+            padding: 30px;
+        }
+        .shoe-image {
+            /* width: 100%; */
+            width: 80%;
+            max-width: 500px;
+            height: auto; /* Maintain aspect ratio */
+            margin: 0 auto; 
+            display: block; /* Ensure the image is displayed as a block element */
+            cursor: pointer; /* Change cursor to pointer when hovering */
+        }
+        .shoe-title {
+            text-align: center; /* Center align the title */
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px; /* Add space between title and image */
+        }
+        .shoe-details {
+            text-align: center; /* Center align the details */
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% for shoe in shoes %}
+        <h1 class="shoe-title">{{ shoe.name }}</h1>
+        <img src="{{ shoe.image_url }}" alt="{{ shoe.name }}" class="shoe-image" onclick="nextImage()">
+        <div class="shoe-details">
+            <p>Code: {{ shoe.code }}</p>
+            <p>Sizes: {{ shoe.sizes }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        let currentIndex = 0; // Variable to track the current image index
+
+        function nextImage() {
+            const images = document.querySelectorAll('.shoe-image');
+            currentIndex = (currentIndex + 1) % images.length; // Increment the index and loop back to 0 if it exceeds the number of images
+            images[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the next image
+        }
+    </script>
+</body>
+</html>
